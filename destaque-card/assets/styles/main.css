@@ -1,0 +1,73 @@
+:root {
+    --body-background-color: rgb(20, 20, 20);
+    --card-background-color: rgba(23, 23, 23);
+    --card-border-color: rgba(255, 255, 255, 0.1);
+    --card-border-highlight-color: rgba(255, 255, 255, 0.3);
+    --card-highlight-color: rgba(255, 255, 255, 0.06);
+}
+
+body {
+    background-color: var(--body-background-color);
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    max-width: 57.55rem;
+    width: calc(100% - 1.25rem);
+}
+
+.card {
+    background-color: var(--card-border-color);
+    height: 16.25rem;
+    width: 18.75rem;
+    border-radius: 0.625rem;
+    cursor: pointer;
+    position: relative;
+}
+.card::before, .card > .card-border {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    content: "";
+    border-radius: inherit;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 500ms;
+}
+
+.card::before {
+    background: radial-gradient(50rem circle at var(--mouse-x) var(--mouse-y), var(--card-highlight-color), transparent 40%);
+    z-index: 3;
+
+}
+.card > .card-border {
+    background: radial-gradient(25rem circle at var(--mouse-x) var(--mouse-y), var(--card-border-highlight-color), transparent 40%);
+    z-index: 1s;
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+#cards:hover > .card > .card-border {
+    opacity: 1;
+}
+
+.card > .card-content {
+    background-color: var(--card-background-color);
+    height: calc(100% - 2px);
+    width: calc(100% - 2px);
+    border-radius: inherit;
+    margin: 1px;
+    position: relative;
+    z-index: 2;
+}
