@@ -1,0 +1,88 @@
+:root {  
+    --purple: rgb(123, 31, 162);
+    --violet: rgb(103, 58, 183);
+    --pink: rgb(244, 143, 177);
+}
+
+@keyframes background-pan {
+    from {
+        background-position: 0% center;
+    }
+
+    to {
+        background-position: -200% center;
+    }
+}
+
+@keyframes scale {
+    from, to {
+        transform: scale(0);
+    }
+
+    50% {
+        transform: scale(1);
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(180deg);
+    }
+}
+
+body {
+    background-color: rgb(10, 10, 10);
+    overflow: hidden;
+    display: grid;
+    height: 100vh;
+    place-items: center;
+}
+
+h1 {
+    color: #fff;
+    font-family: "Rubik", sans-serif;
+    font-size: clamp(2em, 2vw, 4em);
+    padding: 20px;
+    text-align: center;
+}
+
+h1 > .gradient {
+    display: inline-block;
+    position: relative;
+}
+
+h1 > .gradient > .star {
+    --size: clamp(20px, 1.5vw, 30px);
+
+    display: block;
+    height: var(--size);
+    width: var(--size);
+    left: var(--star-left);
+    top: var(--star-top);
+    position: absolute;
+    animation: scale 700ms ease forwards;
+}
+
+h1 > .gradient > .star > svg {
+    display: block;
+    opacity: 0.7;
+    animation: rotate 1000ms linear infinite;
+}
+
+h1 > .gradient > .star > svg > path {
+    fill: var(--violet);
+}
+
+h1 > .gradient > .text-gradient{
+    background: linear-gradient(to right, var(--purple), var(--violet), var(--pink), var(--purple));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    white-space: nowrap;
+    background-size: 200%;
+    animation: background-pan 2s linear infinite;
+}
