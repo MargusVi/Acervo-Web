@@ -1,0 +1,47 @@
+:root {
+    --blue: #0000ff;
+    --light-blue: #add8e6;
+}
+
+body {
+    background-color: rgb(10, 10, 10);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.link {
+    color: #fff;
+    display: block;
+    padding: clamp(0.25em, 1vw, 1em) clamp(1em, 4vw, 4em);
+    font-size: clamp(2em, 8vw, 7em);
+    font-family: "Permanent Marker", cursive;
+    text-decoration: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    position: relative;
+}
+
+.link:nth-child(3) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.link:before {
+    background: linear-gradient(
+        to right,
+        transparent,
+        var(--blue) var(--light-blue-percent),
+        var(--light-blue)
+    );
+    content: "";
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: 100%;
+    width: 0%;
+}
+
+.link:hover:before {
+    transition: width 600ms ease;
+    width: 100%;
+}
