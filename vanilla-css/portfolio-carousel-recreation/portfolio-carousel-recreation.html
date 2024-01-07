@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Carousel Recreation</title>
+
+    <link rel="stylesheet" href="assets/styles/reset.css">
+    <link rel="stylesheet" href="assets/styles/main.css">
+</head>
+<body>
+    <nav data-toggled="false" data-transitionable="false">
+        <div id="nav-logo-section" class="nav-section">
+            <a href="#" rel="noopener" aria-label="Dumpster">
+                <i class="fa-solid fa-dumpster-fire"></i>
+            </a>
+        </div>
+        <div id="nav-mobile-section">
+            <div id="nav-link-section" class="nav-section">
+                <a href="https://github.com/MargusVi">ABOUT</a>
+                <a href="https://www.linkedin.com/in/marcosvinicius-da-silva/">WORK</a>
+            </div>
+            <div id="nav-social-section" class="nav-section">
+                <a href="https://twitter.com/Marcos__V_" aria-label="Twitter">
+                    <i class="fa-brands fa-twitter"></i>
+                </a>
+                <a href="https://www.youtube.com/@iniVsocraM" target="_blank" rel="noopener" aria-label="Youtube">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>    
+                <a href="https://github.com/MargusVi" rel="noopener" aria-label="Codepen">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+            </div>
+            <div id="nav-contact-section" class="nav-section">
+                <a href="https://github.com/MargusVi">GET IN TOUCH</a>
+            </div>
+        </div>
+        <button id="nav-toggle-button" type="button" onclick="handleNavToggle()">
+            <span>Menu</span>
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </nav>
+      
+    <main>
+        <article data-index="0" data-status="active">
+            <div class="article-image-section article-section"></div>
+            <div class="article-description-section article-section">
+                <p>
+                    This is a recreation of <a class="source-link" href="https://www.dylanbrouwer.design/work" target="_blank" rel="noopener">dylanbrouwer.design/work</a> following the Youtube tutorial by Hyperplexed, that can be found here <a class="yt-link" href="https://youtu.be/nG2IyH43xMU" target="_blank" rel="noopener" aria-label="Youtube Link"><i class="fa-brands fa-youtube"></i></a>, and his Codepen, that can be found here <a class="nav-section" href="https://codepen.io/Hyperplexed" target="_blank" rel="noopener" aria-label="Codepen Link"><i class="fa-brands fa-codepen"></i></a>.
+                </p>
+            </div>
+            <div class="article-title-section article-section">
+                <h2>Recreation From Scratch</h2>
+                <i class="fa-solid fa-plus"></i>
+            </div>
+            <div class="article-nav-section article-section">
+                <button class="article-nav-button" type="button" onclick="handleLeftClick()" aria-label="Nav button">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+                <button class="article-nav-button" type="button" onclick="handleRightClick()" aria-label="Nav button">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </article>
+        <article data-index="1" data-status="inactive">    
+            <div class="article-image-section article-section"></div>
+            <div class="article-description-section article-section">
+                <p>A place where books hang out waiting to be grabbed. But don't be too grabby now, ya hear?</p>
+            </div>
+            <div class="article-title-section article-section">
+                <h2>Wicked Cool Library Shelves</h2>
+                <i class="fa-solid fa-plus"></i>
+            </div>
+            <div class="article-nav-section article-section">
+                <button class="article-nav-button" type="button" onclick="handleLeftClick()" aria-label="Nav button">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+                <button class="article-nav-button" type="button" onclick="handleRightClick()" aria-label="Nav button">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </article>
+        <article data-index="2" data-status="inactive">    
+            <div class="article-image-section article-section"></div>
+            <div class="article-description-section article-section">
+                <p>The neatest lighthouse you ever saw. Ehh, actually it's kind of messy. But that's why the pic is of the outside.</p>
+            </div>
+            <div class="article-title-section article-section">
+                <h2>Neato Toledo Lighthouse</h2>
+                <i class="fa-solid fa-plus"></i>
+            </div>
+            <div class="article-nav-section article-section">
+                <button class="article-nav-button" type="button" onclick="handleLeftClick()" aria-label="Nav button">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+                <button class="article-nav-button" type="button" onclick="handleRightClick()" aria-label="Nav button">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </article>
+        <article data-index="3" data-status="inactive">    
+            <div class="article-image-section article-section"></div>
+            <div class="article-description-section article-section">
+                <p>
+                    The blobiest of blobs nestled deep in the heart of outer space. Well, technically the universe is both infinite and homogeneous so there isn't really a heart, per se.
+                </p>
+            </div>
+            <div class="article-title-section article-section">
+                <h2>Super Space Blob</h2>
+                <i class="fa-solid fa-plus"></i>
+            </div>
+            <div class="article-nav-section article-section">
+                <button class="article-nav-button" type="button" onclick="handleLeftClick()" aria-label="Nav button">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+                <button class="article-nav-button" type="button" onclick="handleRightClick()" aria-label="Nav button">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </article>
+    </main>
+    
+    <script src="https://kit.fontawesome.com/014b374492.js" crossorigin="anonymous"></script>
+    <script src="assets/scripts/script.js"></script>
+</body>
+</html>
