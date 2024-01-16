@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotten Tomatoes Mobile Redesign</title>
+
+    <link rel="stylesheet" href="assets/styles/reset.css">
+    <link rel="stylesheet" href="assets/styles/main.css">
+</head>
+<body>
+    <div id="phone">
+        <div id="main-wrapper" class="fancy-scrollbar">
+            <div id="main">
+                <div id="top-bar">
+                    <i class="logo fa-solid fa-tomato"></i>
+                    <input class="search-bar" type="text" placeholder="Search"></input>
+                    <button class="account-button" type="button" aria-label="button">
+                        <i class="fa-solid fa-user"></i>
+                    </button>
+                </div>
+                <div id="content" data-option="at-home">
+                    <div id="content-title-bar">
+                        <div class="title-section">
+                            <h1 class="title">Movies</h1>
+                            <h2 class="subtitle">Aug 22</h2>
+                        </div>
+                        <select class="option-selector toggle" onchange="handleOptionChange(event)" aria-label="button">
+                            <option value="at-home">At Home</option>
+                            <option value="in-theaters">In Theaters</option>
+                            <option value="coming-soon">Coming Soon</option>
+                        </select>        
+                    </div>
+                    <div id="content-filters">
+                        <div class="streaming-service-filter content-filter" data-toggled="false">
+                            <button class="streaming-service-filter-toggle content-filter-toggle toggle" type="button" onclick="handleContentFilterToggle('streaming-service-filter')">
+                                <span class="label">Streaming Services</span>
+                                <i class="fa-regular fa-angle-down"></i>
+                            </button>
+                            <div class="streaming-service-filter-options content-filter-options">
+                                <a id="youtube-link" class="youtube streaming-service-option content-filter-option" href="https://youtube.com/shorts/5TCkjhG1TVU" target="_blank" rel="noopener">
+                                    <i class="fa-brands fa-youtube"></i>
+                                    <span class="label">Click Me</span>
+                                </a>
+                                <button class="netflix streaming-service-option content-filter-option" type="button">
+                                    <span class="label">Netflix</span>          
+                                    <i class="remove fa-regular fa-xmark"></i>
+                                </button>
+                                <button class="hulu streaming-service-option content-filter-option" type="button">
+                                    <span class="label">Hulu</span>          
+                                    <i class="remove fa-regular fa-xmark"></i>
+                                </button>
+                                <button class="hbo-max streaming-service-option content-filter-option" type="button">
+                                    <span class="label">HBO Max</span>          
+                                    <i class="remove fa-regular fa-xmark"></i>
+                                </button>
+                                <button class="disney streaming-service-option content-filter-option" type="button">
+                                    <span class="label">Disney</span>          
+                                    <i class="remove fa-regular fa-xmark"></i>
+                                </button>
+                            </div>
+                            <div class="content-filter-expanded-modal">
+                                <div class="content-filter-expanded-modal-top-bar">
+                                    <h3 class="label">Streaming Services</h3>
+                                    <button class="close" type="button" onclick="handleContentFilterClose('streaming-service-filter')" aria-label="button">
+                                        <i class="fa-regular fa-xmark"></i>
+                                    </button>
+                                </div>
+                                <div class="content-filter-expanded-options fancy-scrollbar">
+                                    <button class="netflix content-filter-expanded-option" data-selected="true" type="button">
+                                        <i class="select fa-regular fa-square"></i>
+                                        <i class="deselect fa-solid fa-square-check"></i>
+                                        <span class="label">Netflix</span>
+                                    </button>
+                                    <button class="hulu content-filter-expanded-option" data-selected="true" type="button">
+                                        <i class="select fa-regular fa-square"></i>
+                                        <i class="deselect fa-solid fa-square-check"></i>
+                                        <span class="label">Hulu</span>
+                                    </button>
+                                    <button class="vudu content-filter-expanded-option" data-selected="false" type="button">
+                                        <i class="select fa-regular fa-square"></i>
+                                        <i class="deselect fa-solid fa-square-check"></i>
+                                        <span class="label">Vudu</span>
+                                    </button>
+                                    <button class="hbo-max content-filter-expanded-option" data-selected="true" type="button">
+                                        <i class="select fa-regular fa-square"></i>
+                                        <i class="deselect fa-solid fa-square-check"></i>
+                                        <span class="label">HBO Max</span>
+                                    </button>
+                                    <button class="disney content-filter-expanded-option" data-selected="true" type="button">
+                                        <i class="select fa-regular fa-square"></i>
+                                        <i class="deselect fa-solid fa-square-check"></i>
+                                        <span class="label">Disney</span>
+                                    </button>
+                                    <button class="prime-video content-filter-expanded-option" data-selected="false" type="button">
+                                        <i class="select fa-regular fa-square"></i>
+                                        <i class="deselect fa-solid fa-square-check"></i>
+                                        <span class="label">Prime Video</span>
+                                    </button>
+                                    <button class="paramount content-filter-expanded-option" data-selected="false" type="button">
+                                        <i class="select fa-regular fa-square"></i>
+                                        <i class="deselect fa-solid fa-square-check"></i>
+                                        <span class="label">Paramount</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="additional-filters content-filter" data-toggled="false">
+                            <button class="additional-filters-toggle content-filter-toggle toggle" type="button" onclick="handleContentFilterToggle('additional-filters')">
+                                <span class="label">Filters</span>
+                                <i class="fa-regular fa-sliders-up"></i>
+                            </button>
+                            <div class="additional-filters-options content-filter-options">
+                                <button class="additional-filters-option content-filter-option" type="button">
+                                    <span class="label">Action <span class="highlight">+2</span></span>          
+                                    <i class="remove fa-regular fa-xmark"></i>
+                                </button>
+                                <button class="additional-filters-option content-filter-option" type="button">
+                                    <span class="label">PG-13</span>          
+                                    <i class="remove fa-regular fa-xmark"></i>
+                                </button>
+                                <button class="additional-filters-option content-filter-option" type="button">
+                                    <span class="label">Fresh</span>          
+                                    <i class="remove fa-regular fa-xmark"></i>
+                                </button>
+                            </div>
+                            <div class="content-filter-expanded-modal">
+                                <div class="content-filter-expanded-modal-top-bar">
+                                    <h3 class="label">Filters</h3>
+                                    <button class="close" type="button" onclick="handleContentFilterClose('additional-filters')" aria-label="button">
+                                        <i class="fa-regular fa-xmark"></i>
+                                    </button>
+                                </div>
+                                <div class="content-filter-expanded-options fancy-scrollbar">
+                                    <div class="content-filter-expanded-options-section">
+                                        <h3 class="label">Genre</h3>
+                                        <div class="content-filter-expanded-options-section-items">
+                                            <button class="content-filter-expanded-option" data-selected="true" type="button">
+                                                <i class="select fa-regular fa-square"></i>
+                                                <i class="deselect fa-solid fa-square-check"></i>
+                                                <span class="label">Action</span>
+                                            </button>
+                                            <button class="content-filter-expanded-option" data-selected="true" type="button">
+                                                <i class="select fa-regular fa-square"></i>
+                                                <i class="deselect fa-solid fa-square-check"></i>
+                                                <span class="label">Adventure</span>
+                                            </button>
+                                            <button class="content-filter-expanded-option" data-selected="false" type="button">
+                                                <i class="select fa-regular fa-square"></i>
+                                                <i class="deselect fa-solid fa-square-check"></i>
+                                                <span class="label">Comedy</span>
+                                            </button>         
+                                            <button class="content-filter-expanded-option" data-selected="true" type="button">
+                                                <i class="select fa-regular fa-square"></i>
+                                                <i class="deselect fa-solid fa-square-check"></i>
+                                                <span class="label">Documentary</span>
+                                            </button>     
+                                            <button class="content-filter-expanded-option" data-selected="false" type="button">
+                                                <i class="select fa-regular fa-square"></i>
+                                                <i class="deselect fa-solid fa-square-check"></i>
+                                                <span class="label">Drama</span>
+                                            </button>            
+                                            <button class="content-filter-expanded-option" data-selected="false" type="button">
+                                                <i class="select fa-regular fa-square"></i>
+                                                <i class="deselect fa-solid fa-square-check"></i>
+                                                <span class="label">Horror</span>
+                                            </button>       
+                                            <button class="content-filter-expanded-option" data-selected="false" type="button">
+                                                <i class="select fa-regular fa-square"></i>
+                                                <i class="deselect fa-solid fa-square-check"></i>
+                                                <span class="label">Sci Fi</span>
+                                            </button>        
+                                        </div>
+                                    </div>
+                                    <div class="content-filter-expanded-options-section">
+                                        <h3 class="label">Rating</h3>
+                                        <div class="content-filter-expanded-options-section-items">
+                                            <button class="content-filter-expanded-option" data-selected="false" type="button">
+                                                <i class="select fa-regular fa-square"></i>
+                                                <i class="deselect fa-solid fa-square-check"></i>
+                                                <span class="label">G</span>
+                                            </button>
+                                            <button class="content-filter-expanded-option" data-selected="false" type="button">
+                                                <i class="select fa-regular fa-square"></i>
+                                                <i class="deselect fa-solid fa-square-check"></i>
+                                                <span class="label">PG</span>
+                                            </button>
+                                            <button class="content-filter-expanded-option" data-selected="true" type="button">
+                                                <i class="select fa-regular fa-square"></i>
+                                                <i class="deselect fa-solid fa-square-check"></i>
+                                                <span class="label">PG-13</span>
+                                            </button>          
+                                            <button class="content-filter-expanded-option" data-selected="false" type="button">
+                                                <i class="select fa-regular fa-square"></i>
+                                                <i class="deselect fa-solid fa-square-check"></i>
+                                                <span class="label">R</span>
+                                            </button>        
+                                            <button class="content-filter-expanded-option" data-selected="false" type="button">
+                                                <i class="select fa-regular fa-square"></i>
+                                                <i class="deselect fa-solid fa-square-check"></i>
+                                                <span class="label">Not Rated</span>
+                                            </button>        
+                                            <button class="content-filter-expanded-option" data-selected="false" type="button">
+                                                <i class="select fa-regular fa-square"></i>
+                                                <i class="deselect fa-solid fa-square-check"></i>
+                                                <span class="label">Unrated</span>
+                                            </button>          
+                                        </div>
+                                    </div>
+                                    <div class="content-filter-expanded-options-section">
+                                        <h3 class="label">Score</h3>
+                                        <div class="content-filter-expanded-options-section-items">
+                                            <button class="content-filter-expanded-option" data-selected="true" type="button">
+                                                <i class="select fa-regular fa-square"></i>
+                                                <i class="deselect fa-solid fa-square-check"></i>
+                                                <span class="label">Fresh</span>
+                                            </button>
+                                            <button class="content-filter-expanded-option" data-selected="false" type="button">
+                                                <i class="select fa-regular fa-square"></i>
+                                                <i class="deselect fa-solid fa-square-check"></i>
+                                                <span class="label">Rotten</span>
+                                            </button>     
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="content-results">
+                        <div class="result">
+                            <div class="result-image"></div>
+                            <div class="result-info">
+                                <div class="result-info-ratings">
+                                    <div class="critic-rating result-info-rating fresh">
+                                        <i class="fa-solid fa-tomato icon"></i>
+                                        <span class="critic-rating-label label">85%</span>
+                                    </div>
+                                    <div class="audience-rating result-info-rating">
+                                        <i class="fa-solid fa-popcorn icon"></i>
+                                        <span class="audience-rating-label label">94%</span>
+                                    </div>
+                                </div>
+                                <h3 class="result-info-title">Spinny Stars</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <nav id="navbar">
+                <a href="#" class="navbar-item">
+                    <i class="fa-solid fa-tomato"></i>
+                    <span class="label">Discover</span>
+                </a>
+                <a href="#" class="navbar-item" data-selected="true">
+                    <i class="fa-regular fa-film"></i>
+                    <span class="label">Movies</span>
+                </a>
+                <a href="#" class="navbar-item">
+                    <i class="fa-solid fa-tv-retro"></i>
+                    <span class="label">TV</span>
+                </a>
+                <a href="#" class="navbar-item">
+                    <i class="fa-regular fa-podcast"></i>
+                    <span class="label">Podcast</span>
+                </a>
+            </nav>
+        </div>
+    </div>
+    
+    <script src="https://kit.fontawesome.com/014b374492.js" crossorigin="anonymous"></script>
+    <script src="assets/scripts/script.js"></script>
+</body>
+</html>
